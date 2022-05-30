@@ -56,6 +56,38 @@ class QHesap(QWidget):
                 self.buttons[-1].clicked.connect(self.ABOUT)
             elif name == "ABOUT QT":
                 self.buttons[-1].clicked.connect(self.ABOUT_QT)
+            elif name == "7":
+                self.buttons[-1].clicked.connect(self.SEVEN)
+            elif name == "8":
+                self.buttons[-1].clicked.connect(self.EIGHT)
+            elif name == "9":
+                self.buttons[-1].clicked.connect(self.NINE)
+            elif name == "/":
+                self.buttons[-1].clicked.connect(self.DIVIDE)
+            elif name == "4":
+                self.buttons[-1].clicked.connect(self.FOUR)
+            elif name == "5":
+                self.buttons[-1].clicked.connect(self.FIVE)
+            elif name == "6":
+                self.buttons[-1].clicked.connect(self.SIX)
+            elif name == "*":
+                self.buttons[-1].clicked.connect(self.MULTIPLE)
+            elif name == "1":
+                self.buttons[-1].clicked.connect(self.ONE)
+            elif name == "2":
+                self.buttons[-1].clicked.connect(self.TWO)
+            elif name == "3":
+                self.buttons[-1].clicked.connect(self.THREE)
+            elif name == "-":
+                self.buttons[-1].clicked.connect(self.MINUS)
+            elif name == "0":
+                self.buttons[-1].clicked.connect(self.ZERO)
+            elif name == ".":
+                self.buttons[-1].clicked.connect(self.DECIMAL)
+            elif name == "=":
+                self.buttons[-1].clicked.connect(self.EQUALS)
+            elif name == "+":
+                self.buttons[-1].clicked.connect(self.PLUS)
 
             nx = self.button_names.index(name)
             position = self.button_positions[nx]
@@ -83,6 +115,54 @@ class QHesap(QWidget):
         print("ABOUT")
 
     def ABOUT_QT(self):
+        print("ABOUT QT")
+
+    def SEVEN(self):
+        print("CLS")
+
+    def EIGHT(self):
+        print("BACKSPACE")
+
+    def NINE(self):
+        print("ABOUT")
+
+    def DIVIDE(self):
+        print("ABOUT QT")
+    
+    def FOUR(self):
+        print("CLS")
+
+    def FIVE(self):
+        print("BACKSPACE")
+
+    def SIX(self):
+        print("ABOUT")
+
+    def MULTIPLE(self):
+        print("ABOUT QT")
+    
+    def ONE(self):
+        print("CLS")
+
+    def TWO(self):
+        print("BACKSPACE")
+
+    def THREE(self):
+        print("ABOUT")
+
+    def MINUS(self):
+        print("ABOUT QT")
+    
+    def ZERO(self):
+        print("CLS")
+
+    def DECIMAL(self):
+        print("BACKSPACE")
+
+    def EQUALS(self):
+        print("ABOUT")
+
+    def PLUS(self):
         print("ABOUT QT")
 
 def main(args):

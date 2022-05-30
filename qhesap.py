@@ -17,7 +17,8 @@
 import sys
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import (QApplication, QGridLayout,
-                             QLineEdit, QPushButton, QWidget)
+                             QLineEdit, QMessageBox,
+                             QPushButton, QWidget)
 
 from version import QHESAP_VERSION
 
@@ -27,6 +28,13 @@ class QHesap(QWidget):
         self.initUI()
 
     def initUI(self):
+        self.firstOperand = 0
+        self.isPlusPressed = False
+        self.isMinusPressed = False
+        self.isMultiplePressed = False
+        self.isDividePressed = False
+        self.isEnteredFirstOperand = False
+
         self.grid = QGridLayout()
         self.grid.setSpacing(10)
         self.setLayout(self.grid)
@@ -106,64 +114,184 @@ class QHesap(QWidget):
         self.move(qr.topLeft())
 
     def CLS(self):
-        print("CLS")
+        self.lineEdit.clear()
 
     def BACKSPACE(self):
-        print("BACKSPACE")
+        self.lineEdit.setText(self.lineEdit.text()[:-1])
 
     def ABOUT(self):
-        print("ABOUT")
+        self.aboutBox = QMessageBox.about(self,
+                                          "About QHesap",
+                                          "QHesap " + QHESAP_VERSION + "\n" +
+                                          "Written by Erdem Ersoy (eersoy93).\n" +
+                                          "Copyright (c) 2022 Erdem Ersoy\n" +
+                                          "QHesap is licensed with GPLv3.\n" +
+                                          "QHesap GitHub link: https://github.com/eersoy93/qhesap")
 
     def ABOUT_QT(self):
-        print("ABOUT QT")
+        self.aboutQtBox = QMessageBox.aboutQt(self, "About Qt")
 
     def SEVEN(self):
-        print("CLS")
+        NUMERAL_STR = "7"
+        if not (self.isPlusPressed or self.isMinusPressed or self.isMultiplePressed or self.isDividePressed):
+            self.lineEdit.setText(self.lineEdit.text() + NUMERAL_STR)
+        else:
+            self.lineEdit.clear()
+            self.lineEdit.setText(NUMERAL_STR)
 
     def EIGHT(self):
-        print("BACKSPACE")
+        NUMERAL_STR = "8"
+        if not (self.isPlusPressed or self.isMinusPressed or self.isMultiplePressed or self.isDividePressed):
+            self.lineEdit.setText(self.lineEdit.text() + NUMERAL_STR)
+        else:
+            self.lineEdit.clear()
+            self.lineEdit.setText(NUMERAL_STR)
 
     def NINE(self):
-        print("ABOUT")
+        NUMERAL_STR = "9"
+        if not (self.isPlusPressed or self.isMinusPressed or self.isMultiplePressed or self.isDividePressed):
+            self.lineEdit.setText(self.lineEdit.text() + NUMERAL_STR)
+        else:
+            self.lineEdit.clear()
+            self.lineEdit.setText(NUMERAL_STR)
 
     def DIVIDE(self):
-        print("ABOUT QT")
-    
+        self.isPlusPressed = False
+        self.isMinusPressed = False
+        self.isMultiplePressed = False
+        self.isDividePressed = True
+
+        if self.lineEdit.text() == "":
+            self.firstOperand = 0.0
+        else:
+            try:
+                self.firstOperand = float(self.lineEdit.text())
+            except ValueError:
+                self.lineEdit.clear(),
+                self.firstOperand = 0.0
+
     def FOUR(self):
-        print("CLS")
+        NUMERAL_STR = "4"
+        if not (self.isPlusPressed or self.isMinusPressed or self.isMultiplePressed or self.isDividePressed):
+            self.lineEdit.setText(self.lineEdit.text() + NUMERAL_STR)
+        else:
+            self.lineEdit.clear()
+            self.lineEdit.setText(NUMERAL_STR)
 
     def FIVE(self):
-        print("BACKSPACE")
+        NUMERAL_STR = "5"
+        if not (self.isPlusPressed or self.isMinusPressed or self.isMultiplePressed or self.isDividePressed):
+            self.lineEdit.setText(self.lineEdit.text() + NUMERAL_STR)
+        else:
+            self.lineEdit.clear()
+            self.lineEdit.setText(NUMERAL_STR)
 
     def SIX(self):
-        print("ABOUT")
+        NUMERAL_STR = "6"
+        if not (self.isPlusPressed or self.isMinusPressed or self.isMultiplePressed or self.isDividePressed):
+            self.lineEdit.setText(self.lineEdit.text() + NUMERAL_STR)
+        else:
+            self.lineEdit.clear()
+            self.lineEdit.setText(NUMERAL_STR)
 
     def MULTIPLE(self):
-        print("ABOUT QT")
-    
+        self.isPlusPressed = False
+        self.isMinusPressed = False
+        self.isMultiplePressed = True
+        self.isDividePressed = False
+
+        if self.lineEdit.text() == "":
+            self.firstOperand = 0.0
+        else:
+            try:
+                self.firstOperand = float(self.lineEdit.text())
+            except ValueError:
+                self.lineEdit.clear(),
+                self.firstOperand = 0.0
+
     def ONE(self):
-        print("CLS")
+        NUMERAL_STR = "1"
+        if not (self.isPlusPressed or self.isMinusPressed or self.isMultiplePressed or self.isDividePressed):
+            self.lineEdit.setText(self.lineEdit.text() + NUMERAL_STR)
+        else:
+            self.lineEdit.clear()
+            self.lineEdit.setText(NUMERAL_STR)
 
     def TWO(self):
-        print("BACKSPACE")
+        NUMERAL_STR = "2"
+        if not (self.isPlusPressed or self.isMinusPressed or self.isMultiplePressed or self.isDividePressed):
+            self.lineEdit.setText(self.lineEdit.text() + NUMERAL_STR)
+        else:
+            self.lineEdit.clear()
+            self.lineEdit.setText(NUMERAL_STR)
 
     def THREE(self):
-        print("ABOUT")
+        NUMERAL_STR = "3"
+        if not (self.isPlusPressed or self.isMinusPressed or self.isMultiplePressed or self.isDividePressed):
+            self.lineEdit.setText(self.lineEdit.text() + NUMERAL_STR)
+        else:
+            self.lineEdit.clear()
+            self.lineEdit.setText(NUMERAL_STR)
 
     def MINUS(self):
-        print("ABOUT QT")
-    
+        self.isPlusPressed = False
+        self.isMinusPressed = True
+        self.isMultiplePressed = False
+        self.isDividePressed = False
+
+        if self.lineEdit.text() == "":
+            self.firstOperand = 0.0
+        else:
+            try:
+                self.firstOperand = float(self.lineEdit.text())
+            except ValueError:
+                self.lineEdit.clear(),
+                self.firstOperand = 0.0
+
     def ZERO(self):
-        print("CLS")
+        NUMERAL_STR = "0"
+        if not (self.isPlusPressed or self.isMinusPressed or self.isMultiplePressed or self.isDividePressed):
+            self.lineEdit.setText(self.lineEdit.text() + NUMERAL_STR)
+        else:
+            self.lineEdit.clear()
+            self.lineEdit.setText(NUMERAL_STR)
 
     def DECIMAL(self):
-        print("BACKSPACE")
+        x = self.lineEdit.text()
+        if x.find(".", 0, len(x)) == -1:
+            self.lineEdit.setText(x + ".")
 
     def EQUALS(self):
-        print("ABOUT")
+        x = self.lineEdit.text()
+
+        if self.isPlusPressed:
+            self.lineEdit.setText(str(self.firstOperand + float(x)))
+        elif self.isMinusPressed:
+            self.lineEdit.setText(str(self.firstOperand - float(x)))
+        elif self.isMultiplePressed:
+            self.lineEdit.setText(str(self.firstOperand * float(x)))
+        elif self.isDividePressed:
+            self.lineEdit.setText(str(self.firstOperand / float(x)))
+
+        self.isPlusPressed = False
+        self.isMinusPressed = False
+        self.isMultiplePressed = False
+        self.isDividePressed = False
 
     def PLUS(self):
-        print("ABOUT QT")
+        self.isPlusPressed = True
+        self.isMinusPressed = False
+        self.isMultiplePressed = False
+        self.isDividePressed = False
+
+        if self.lineEdit.text() == "":
+            self.firstOperand = 0.0
+        else:
+            try:
+                self.firstOperand = float(self.lineEdit.text())
+            except ValueError:
+                self.lineEdit.clear(),
+                self.firstOperand = 0.0
 
 def main(args):
     app = QApplication(args)

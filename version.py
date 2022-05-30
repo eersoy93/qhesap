@@ -14,4 +14,4 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-QHESAP_VERSION = "0.1"
+QHESAP_VERSION = "0.2"

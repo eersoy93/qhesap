@@ -46,6 +46,15 @@ class QHesap(QWidget):
         for name in self.button_names:
             self.buttons.append(QPushButton(name))
 
+            if name == "CLS":
+                self.buttons[-1].clicked.connect(self.CLS)
+            elif name == "←":
+                self.buttons[-1].clicked.connect(self.BACKSPACE)
+            elif name == "ABOUT":
+                self.buttons[-1].clicked.connect(self.ABOUT)
+            elif name == "ABOUT QT":
+                self.buttons[-1].clicked.connect(self.ABOUT_QT)
+
             nx = self.button_names.index(name)
             position = self.button_positions[nx]
             self.grid.addWidget(self.buttons[nx], *position)
@@ -61,6 +70,18 @@ class QHesap(QWidget):
 
         qr.moveCenter(cp)
         self.move(qr.topLeft())
+
+    def CLS(self):
+        print("CLS")
+
+    def BACKSPACE(self):
+        print("BACKSPACE")
+
+    def ABOUT(self):
+        print("ABOUT")
+
+    def ABOUT_QT(self):
+        print("ABOUT QT")
 
 def main(args):
     app = QApplication(args)

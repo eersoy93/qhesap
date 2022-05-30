@@ -1,5 +1,5 @@
 # QHesap
-A calculator written with PyQt6. Hesap means calculate in Turkish. (WORK IN PROGRESS!!!)
+A calculator written with PyQt6. Hesap means calculate in Turkish.
 
 # Copyright and LICENSE
 Copyright (c) 2022 Erdem Ersoy (eersoy93).

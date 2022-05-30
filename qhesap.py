@@ -33,23 +33,24 @@ class QHesap(QWidget):
         self.lineEdit.setAlignment(Qt.AlignmentFlag.AlignRight)
         self.grid.addWidget(self.lineEdit, 0, 0, 1, 4)
 
-        button_names = ["CLS", "←", "ABOUT", "ABOUT QT",
-                        "7", "8", "9", "/",
-                        "4", "5", "6", "*",
-                        "1", "2", "3", "-",
-                        "0", ".", "=", "+"]
+        self.button_names = ["CLS", "←", "ABOUT", "ABOUT QT",
+                             "7", "8", "9", "/",
+                             "4", "5", "6", "*",
+                             "1", "2", "3", "-",
+                             "0", ".", "=", "+"]
 
-        button_positions = [(i, j) for i in range(1, 6) for j in range(4)]
+        self.button_positions = [(i, j) for i in range(1, 6) for j in range(4)]
 
-        for position, name in zip(button_positions, button_names):
-            if name == "":
-                continue
-            
-            button = QPushButton(name)
-            self.grid.addWidget(button, *position)
+        self.buttons = list()
+
+        for name in self.button_names:
+            nx = self.button_names.index(name)
+            position = self.button_positions[nx]
+            self.buttons.append(QPushButton(name))
+            self.grid.addWidget(self.buttons[nx], *position)
 
         self.center()
-        self.setFixedSize(300, 300)
+        self.setFixedSize(310, 300)
         self.setWindowTitle("QHesap")
         self.show()
 

@@ -44,9 +44,10 @@ class QHesap(QWidget):
         self.buttons = list()
 
         for name in self.button_names:
+            self.buttons.append(QPushButton(name))
+
             nx = self.button_names.index(name)
             position = self.button_positions[nx]
-            self.buttons.append(QPushButton(name))
             self.grid.addWidget(self.buttons[nx], *position)
 
         self.center()

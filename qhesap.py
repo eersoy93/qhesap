@@ -19,6 +19,8 @@ from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import (QApplication, QGridLayout,
                              QLineEdit, QPushButton, QWidget)
 
+from version import QHESAP_VERSION
+
 class QHesap(QWidget):
     def __init__(self):
         super().__init__()
@@ -61,7 +63,7 @@ class QHesap(QWidget):
 
         self.center()
         self.setFixedSize(310, 300)
-        self.setWindowTitle("QHesap")
+        self.setWindowTitle("QHesap " + QHESAP_VERSION)
         self.show()
 
     def center(self):
